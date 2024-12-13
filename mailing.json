@@ -1,0 +1,109 @@
+{
+    "recipients": [
+        {
+            "id": 1,
+            "email": "wwwsasha22042002@mail.ru",
+            "full_name": "Александр Сергеевич Побережный",
+            "comment": "123"
+        },
+        {
+            "id": 2,
+            "email": "poberezhnyy_alexandr@mail.ru",
+            "full_name": "Александр Сергеевич Побережный",
+            "comment": "1231"
+        }
+    ],
+    "messages": [
+        {
+            "id": 1,
+            "subject": "food",
+            "body": "food"
+        },
+        {
+            "id": 2,
+            "subject": "1",
+            "body": "1"
+        },
+        {
+            "id": 3,
+            "subject": "1",
+            "body": "1"
+        },
+        {
+            "id": 4,
+            "subject": "1",
+            "body": "k"
+        },
+        {
+            "id": 5,
+            "subject": "йцу",
+            "body": "qwe"
+        },
+        {
+            "id": 6,
+            "subject": "123",
+            "body": "321"
+        },
+        {
+            "id": 7,
+            "subject": "письмо",
+            "body": "рассказ"
+        },
+        {
+            "id": 8,
+            "subject": "письмо",
+            "body": "ячсячсяч"
+        }
+    ],
+    "mailings": [
+        {
+            "id": 2,
+            "start_time": "2024-12-13T16:10:00Z",
+            "end_time": "2024-12-14T16:10:00Z",
+            "status": "Создана",
+            "message_id": 2,
+            "owner_id": 1
+        },
+        {
+            "id": 3,
+            "start_time": "2024-12-13T16:13:00Z",
+            "end_time": "2024-12-13T16:14:00Z",
+            "status": "Запущена",
+            "message_id": 1,
+            "owner_id": 1
+        },
+        {
+            "id": 1,
+            "start_time": "2024-12-10T16:04:25Z",
+            "end_time": "2024-12-10T16:06:32Z",
+            "status": "Запущена",
+            "message_id": 1,
+            "owner_id": 5
+        },
+        {
+            "id": 4,
+            "start_time": "2024-12-13T16:39:00Z",
+            "end_time": "2024-12-25T16:39:00Z",
+            "status": "Запущена",
+            "message_id": 1,
+            "owner_id": 1
+        },
+        {
+            "id": 5,
+            "start_time": "2024-12-12T16:41:00Z",
+            "end_time": "2024-12-13T16:41:00Z",
+            "status": "Завершена",
+            "message_id": 7,
+            "owner_id": 1
+        }
+    ],
+    "mailing_attempts": [
+        {
+            "id": 1,
+            "attempt_time": "2024-12-13T13:38:37.016Z",
+            "status": "Успешно",
+            "server_response": "Email sent successfully.",
+            "mailing_id": 1
+        }
+    ]
+}

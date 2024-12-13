@@ -1,0 +1,25 @@
+       {% extends "base.html" %}
+       {% block content %}
+       <h2>Получатели</h2>
+       <a href="{% url 'mailing:recipient_create' %}">Добавить получателя</a>
+       <table>
+           <tr>
+               <th>Email</th>
+               <th>Ф.И.О.</th>
+               <th>Комментарий</th>
+               <th>Действия</th>
+           </tr>
+           {% for recipient in recipients %}
+           <tr>
+               <td>{{ recipient.email }}</td>
+               <td>{{ recipient.full_name }}</td>
+               <td>{{ recipient.comment }}</td>
+               <td>
+                   <a href="{% url 'mailing:recipient_detail' recipient.pk %}">Просмотреть</a>
+                   <a href="{% url 'mailing:recipient_update' recipient.pk %}">Редактировать</a>
+                   <a href="{% url 'mailing:recipient_delete' recipient.pk %}">Удалить</a>
+               </td>
+           </tr>
+           {% endfor %}
+       </table>
+       {% endblock %}

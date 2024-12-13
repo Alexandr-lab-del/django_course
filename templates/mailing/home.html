@@ -1,0 +1,9 @@
+     {% extends "base.html" %}
+     {% block content %}
+     <h1>Добро пожаловать в Mailing Service</h1>
+     <ul>
+         <li>Всего рассылок: {{ total_mailings }}</li>
+         <li>Активных рассылок: {{ active_mailings }}</li>
+         <li>Уникальных получателей: {{ unique_recipients }}</li>
+     </ul>
+     {% endblock %}

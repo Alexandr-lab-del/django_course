@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Попытки рассылки для рассылки {{ mailing.id }}</h2>
+<table>
+    <tr>
+        <th>Дата и время</th>
+        <th>Статус</th>
+        <th>Ответ сервера</th>
+    </tr>
+    {% for attempt in attempts %}
+    <tr>
+        <td>{{ attempt.attempt_time }}</td>
+        <td>{{ attempt.status }}</td>
+        <td>{{ attempt.server_response }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'mailing:mailing_detail' mailing.pk %}">Назад к рассылке</a>
+{% endblock %}
