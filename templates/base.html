@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Mailing Service</title>
+       <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   </head>
+   <body>
+       <header>
+           <nav>
+               <ul>
+                   <li><a href="{% url 'mailing:home' %}">Главная</a></li>
+                   <li><a href="{% url 'mailing:mailing_list' %}">Рассылки</a></li>
+                   <li><a href="{% url 'mailing:recipient_list' %}">Получатели</a></li>
+                   <li><a href="{% url 'mailing:message_list' %}">Сообщения</a></li>
+                   {% if user.is_authenticated %}
+                       <li><a href="{% url 'users:profile' %}">Профиль</a></li>
+                       <li><a href="{% url 'account_logout' %}">Выход</a></li>
+                   {% else %}
+                       <li><a href="{% url 'account_login' %}">Вход</a></li>
+                       <li><a href="{% url 'account_signup' %}">Регистрация</a></li>
+                   {% endif %}
+               </ul>
+           </nav>
+       </header>
+       <main>
+           {% if messages %}
+               <ul class="messages">
+                   {% for message in messages %}
+                       <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                   {% endfor %}
+               </ul>
+           {% endif %}
+           {% block content %}{% endblock %}
+       </main>
+       <footer>
+           <p>&copy; 2024 Mailing Service</p>
+       </footer>
+   </body>
+   </html>

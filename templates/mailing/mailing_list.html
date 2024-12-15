@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Рассылки</h2>
+<a href="{% url 'mailing:mailing_create' %}">Создать рассылку</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Статус</th>
+        <th>Дата начала</th>
+        <th>Дата окончания</th>
+        <th>Сообщение</th>
+        <th>Действия</th>
+    </tr>
+    {% for mailing in mailings %}
+    <tr>
+        <td>{{ mailing.id }}</td>
+        <td>{{ mailing.status }}</td>
+        <td>{{ mailing.start_time }}</td>
+        <td>{{ mailing.end_time }}</td>
+        <td>{{ mailing.message.subject }}</td>
+        <td>
+            <a href="{% url 'mailing:mailing_detail' mailing.pk %}">Просмотреть</a>
+            <a href="{% url 'mailing:mailing_update' mailing.pk %}">Редактировать</a>
+            <a href="{% url 'mailing:mailing_delete' mailing.pk %}">Удалить</a>
+            <a href="{% url 'mailing:send_mailing' mailing.pk %}">Отправить</a>
+            <a href="{% url 'mailing:mailing_attempt_list' mailing.pk %}">Попытки</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

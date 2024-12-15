@@ -1,0 +1,22 @@
+   {% extends "base.html" %}
+   {% block content %}
+   <h2>Статистика рассылок</h2>
+   <table>
+       <tr>
+           <th>ID рассылки</th>
+           <th>Статус</th>
+           <th>Успешно</th>
+           <th>Не успешно</th>
+           <th>Всего попыток</th>
+       </tr>
+       {% for mailing, data in stats.items %}
+       <tr>
+           <td>{{ mailing.id }}</td>
+           <td>{{ mailing.status }}</td>
+           <td>{{ data.success }}</td>
+           <td>{{ data.fail }}</td>
+           <td>{{ data.total }}</td>
+       </tr>
+       {% endfor %}
+   </table>
+   {% endblock %}
