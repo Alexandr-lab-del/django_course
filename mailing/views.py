@@ -1,3 +1,4 @@
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -151,14 +152,20 @@ class MailingDeleteView(LoginRequiredMixin, OwnerMixin, DeleteView):
     success_url = reverse_lazy('mailing:mailing_list')
 
 
-class MailingAttemptListView(LoginRequiredMixin, OwnerMixin, ListView):
+class MailingAttemptListView(LoginRequiredMixin, ListView):
     model = MailingAttempt
     template_name = 'mailing/mailing_attempt_list.html'
-    context_object_name = 'attempts'
 
     def get_queryset(self):
-        mailing = self.get_object()
+        mailing = get_object_or_404(Mailing, pk=self.kwargs['pk'])
+        if mailing.owner != self.request.user and not self.request.user.groups.filter(name='Менеджеры').exists():
+            raise PermissionDenied
         return MailingAttempt.objects.filter(mailing=mailing)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['mailing'] = get_object_or_404(Mailing, pk=self.kwargs['pk'])
+        return context
 
 
 @login_required
